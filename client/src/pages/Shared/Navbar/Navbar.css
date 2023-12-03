@@ -1,0 +1,18 @@
+li > a{
+    text-align: center !important;
+}
+li > .active{
+    background: none !important;
+    color: #ffd300 !important;
+    border-right: 2px solid #ffd300;
+    border-left: 2px solid #ffd300;
+    
+    font-weight: bold;
+}
+li > a:hover{
+    background: none !important;
+    color: #ffd300 !important;
+    border-right: 2px solid #ffd300;
+    border-left: 2px solid #ffd300;
+    font-weight: bold;
+}

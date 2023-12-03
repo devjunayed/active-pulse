@@ -1,0 +1,14 @@
+ul.dashboard > li > a {
+    margin-top: 10px;
+    color: white !important;
+    border-radius: 20px;
+    text-align: left !important;
+}
+ul.dashboard > li:hover a{
+    color: orange !important;
+    border: none;
+}
+ul.dashboard > li a.active{
+    color: orange !important;
+    border: none;
+}
