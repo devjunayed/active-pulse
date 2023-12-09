@@ -22,3 +22,5 @@
 
 5. **Newsletter Section:**
    - Stay updated with the latest news, offers, and content.
+## Used technologies
+[![My Skills](https://skillicons.dev/icons?i=react,mongodb,mongoose,express,tailwind,wasm)]
