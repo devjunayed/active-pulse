@@ -23,4 +23,4 @@
 5. **Newsletter Section:**
    - Stay updated with the latest news, offers, and content.
 ## Used technologies
-![Used technologies](https://skillicons.dev/icons?i=react,mongodb,mongoose,express,tailwind)
+![Used technologies](https://skillicons.dev/icons?i=vite,react,firebase,mongodb,express,tailwind)
