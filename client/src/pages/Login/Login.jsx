@@ -32,11 +32,18 @@ const Login = () => {
             })
             .catch(err => {
                 console.log(err.message, err.code)
+
                 if (err.code === "auth/invalid-login-credentials") {
                     Swal.fire({
                         icon: "error",
                         title: "Oops...",
                         text: "Invalid credentials",
+                    });
+                }else{
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something wents wrong!",
                     });
                 }
 

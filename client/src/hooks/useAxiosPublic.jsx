@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const publicAxios = axios.create({
-    baseURL: "https://active-pulse.vercel.app"
+    baseURL: "http://localhost:5000"
 })
 const useAxiosPublic = () => {
     return publicAxios;

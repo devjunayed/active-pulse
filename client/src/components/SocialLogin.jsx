@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import PropTypes from 'prop-types';
 
-const SocialLogin = ({from}) => {
+const SocialLogin = ({ from }) => {
     const { googleSignIn } = useAuth();
     const navigate = useNavigate();
     const publicAxios = useAxiosPublic();
@@ -30,12 +30,16 @@ const SocialLogin = ({from}) => {
                                     showConfirmButton: false,
                                     timer: 1500
                                 });
-                                navigate(from , {replace: true});
+                                navigate(from, { replace: true });
                             }
 
                         })
                 }
             })
+            .catch(err => {
+                console.log(err);
+            }
+            )
 
     }
 
@@ -43,7 +47,7 @@ const SocialLogin = ({from}) => {
 };
 
 SocialLogin.propTypes = {
-    from : PropTypes.string
+    from: PropTypes.string
 }
 
 export default SocialLogin;
