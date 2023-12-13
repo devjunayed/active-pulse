@@ -13,6 +13,7 @@ const SocialLogin = ({ from }) => {
     const handleSocialLogin = () => {
         googleSignIn()
             .then(res => {
+                console.log(res.user);
                 if (res.user) {
                     const userInfo = {
                         email: res.user.email,
@@ -34,6 +35,7 @@ const SocialLogin = ({ from }) => {
                             }
 
                         })
+                        .catch(err => console.log(err));
                 }
             })
             .catch(err => {

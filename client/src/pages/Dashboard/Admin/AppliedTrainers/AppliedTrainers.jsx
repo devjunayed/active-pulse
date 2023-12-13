@@ -10,7 +10,7 @@ const AppliedTrainers = () => {
     const secureAxios = useAxiosSecure();
 
 
-    const { data: pendingTrainers = [], refetch } = useQuery({
+    const { data: pendingTrainers = [], refetch, isFetching, isPending } = useQuery({
         queryKey: [],
         queryFn: async () => {
             const trainer = await secureAxios.get("/pending/trainers");
@@ -24,7 +24,7 @@ const AppliedTrainers = () => {
 
         delete trainer._id;
 
-        trainer.joiningDate = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+        trainer.joiningDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 
         Swal.fire({
             title: `${trainer?.fullName}`,
@@ -104,56 +104,60 @@ const AppliedTrainers = () => {
 
     return (
         <div>
-            <SectionTitle title="Applied Trainers" className="my-0" />
-            <div className="overflow-x-auto rounded-xl">
+            {
+                isFetching || isPending ? <div className='h-screen flex justify-center items-center'><span className='loading'></span></div> : <div>
+                    <SectionTitle title="Applied Trainers" className="my-0" />
+                    <div className="overflow-x-auto rounded-xl">
 
-                {pendingTrainers.length === 0 ? <div className='h-[50vh] flex items-center justify-center'>
+                        {pendingTrainers.length === 0 ? <div className='h-[50vh] flex items-center justify-center'>
 
-                    <h2 className='text-center text-red-500 text-3xl'>No Applied Trainers found</h2>
+                            <h2 className='text-center text-red-500 text-3xl'>No Applied Trainers found</h2>
 
-                </div> :
-                    <table className="table">
-                        {/* head */}
-                        <thead className='bg-ap-green text-lg'>
-                            <tr>
-                                <th></th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Applying Date</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                pendingTrainers.map((trainer, index) => <tr key={trainer._id}>
-                                    <th>
-                                        {index + 1}
-                                    </th>
-                                    <td>
-                                        <div className="flex items-center gap-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src={trainer.photoURL} />
+                        </div> :
+                            <table className="table">
+                                {/* head */}
+                                <thead className='bg-ap-green text-lg'>
+                                    <tr>
+                                        <th></th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Applying Date</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        pendingTrainers.map((trainer, index) => <tr key={trainer._id}>
+                                            <th>
+                                                {index + 1}
+                                            </th>
+                                            <td>
+                                                <div className="flex items-center gap-3">
+                                                    <div className="avatar">
+                                                        <div className="mask mask-squircle w-12 h-12">
+                                                            <img src={trainer.photoURL} />
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        {trainer.fullName}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div>
-                                                {trainer.fullName}
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>{trainer.email}</td>
-                                    <td>{trainer.appliedDate}</td>
-                                    <th>
-                                        <button className="btn text-xl" onClick={() => handleView(trainer)}><ImEye /></button>
-                                    </th>
-                                </tr>)
-                            }
+                                            </td>
+                                            <td>{trainer.email}</td>
+                                            <td>{trainer.appliedDate}</td>
+                                            <th>
+                                                <button className="btn text-xl" onClick={() => handleView(trainer)}><ImEye /></button>
+                                            </th>
+                                        </tr>)
+                                    }
 
-                        </tbody>
+                                </tbody>
 
-                    </table>
-                }
-            </div>
+                            </table>
+                        }
+                    </div>
+                </div>
+            }
         </div>
     );
 };

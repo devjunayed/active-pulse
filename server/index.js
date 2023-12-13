@@ -9,7 +9,7 @@ const port = 5000 || process.env.PORT;
 // middle ware
 app.use(cors({
   origin: [
-    // "http://localhost:5173",
+    "http://localhost:5173",
     "https://devjunayed-active-pulse.web.app",
   ],
   credentials: true,
